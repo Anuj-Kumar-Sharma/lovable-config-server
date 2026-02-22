@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway.server.webflux:
+      routes:
+        # Account Service (context-path: /account)
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/api/v1/account/**
+          filters:
+            - StripPrefix=2
+
+        
