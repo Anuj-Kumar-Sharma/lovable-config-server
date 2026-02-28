@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5434/lovable-intelligence-db
+    url: jdbc:postgresql://localhost:9010/lovable-intelligence-db
     username: user
     password: password
     driver-class-name: org.postgresql.Driver
