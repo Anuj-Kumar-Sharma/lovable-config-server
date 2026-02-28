@@ -4,7 +4,20 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5434/lovable-me-intelligence-db
+    url: jdbc:postgresql://localhost:5434/lovable-intelligence-db
     username: user
     password: password
     driver-class-name: org.postgresql.Driver
+
+  ai:
+    model.chat: openai
+    openai:
+      api-key: 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
+      base-url: https://openrouter.ai/api
+      chat:
+        options:
+          model: google/gemini-3-flash-preview
+          temperature: 0.2
+      embedding:
+        options:
+          model: qwen/qwen3-embedding-8b
