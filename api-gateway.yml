@@ -1,6 +1,14 @@
 server:
   port: 8080
 
+app:
+  security:
+    public-routes:
+      - "/api/v1/account/auth/login"
+      - "/api/v1/account/auth/signup"
+      - "/api/v1/account/webhooks/**"
+      - "/api/v1/workspace/public/**"
+
 spring:
   cloud:
     gateway.server.webflux:
