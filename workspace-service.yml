@@ -18,3 +18,24 @@ minio:
   access-key: minioadmin
   secret-key: minioadmin123
   project-bucket: projects
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  datasource:
+    url: jdbc:postgresql://pgvector.lovable-core.svc.cluster.local:5432/workspace_db
+    username: workspace_user
+    password: ${DB_PASSWORD}
+  data:
+    redis:
+      host: redis.lovable-core.svc.cluster.local
+      port: 6379
+
+minio:
+  url: http://minio.lovable-core.svc.cluster.local:9000
+  access-key: ${MINIO_ROOT_USER}
+  secret-key: ${MINIO_ROOT_PASSWORD}
+  project-bucket: projects

@@ -38,3 +38,54 @@ jwt.secretKey: asfd9asfdaoijfalkjl23u4oi5jlkjf98790890890ugojvakglsdfjn8yuh
 app:
   frontend:
     url: http://localhost:8080/frontend
+  preview:
+    domain: localhost
+    namespace: shuttle-apps
+    proxy-port: 8090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  health:
+    config:
+      enabled: false
+
+logging:
+  level:
+    org.apache.kafka.clients: WARN
+    org.apache.kafka.common: WARN
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  kafka:
+    bootstrap-servers: kafka.lovable-core.svc.cluster.local:9092
+  cloud:
+    discovery:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
+
+jwt.secretKey: ${JWT_SECRET}
+
+app:
+  frontend:
+    url: ${FRONTEND_URL}
+  preview:
+    domain: ${PREVIEW_DOMAIN}
+    namespace: ${PREVIEW_NAMESPACE}
+    proxy-port: ${PROXY_PORT}
+
+ACCOUNT_SERVICE_URI: http://account-service
+WORKSPACE_SERVICE_URI: http://workspace-service
+INTELLIGENCE_SERVICE_URI: http://intelligence-service
+

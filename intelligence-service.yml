@@ -21,3 +21,21 @@ spring:
       embedding:
         options:
           model: qwen/qwen3-embedding-8b
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  datasource:
+    url: jdbc:postgresql://pgvector.lovable-core.svc.cluster.local:5432/intelligence_db
+    username: intelligence_user
+    password: ${DB_PASSWORD}
+
+ai:
+    openai:
+      api-key: ${AI_API_KEY}
+    chat:
+        options:
+          model: google/gemini-3-flash-preview
